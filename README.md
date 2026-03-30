@@ -1,60 +1,62 @@
-# 🏢 Active Directory & IAM Lab – Windows Server 2022
+# Active Directory & IAM Lab – Windows Server 2022
 
-Ett hemmalabb där jag satte upp en komplett Active Directory-miljö från grunden för att förstå hur IAM fungerar i praktiken – hur användare skapas, hanteras och tas bort i en företagsmiljö.
-
----
-
-## 🎯 Syfte
-
-Jag ville förstå hur riktiga IT-miljöer hanterar användare, behörigheter och policys. AD är grunden i nästan alla Windows-baserade företag, och det är också direkt kopplat till moderna IAM-plattformar som Azure AD och Okta.
+A home lab where I built a complete Active Directory environment from scratch to understand how identity and access management works in practice – user lifecycle, group policies, and role-based access control in a Windows domain.
 
 ---
 
-## 🛠️ Teknik & Verktyg
+## Overview
+
+Most enterprise environments run on Active Directory. This lab gave me hands-on experience with the same tools and concepts used in real IT departments, and a practical understanding of how on-premises AD connects to cloud identity platforms like Azure AD / Entra ID and Okta.
+
+---
+
+## Tools & Technologies
 
 - Windows Server 2022 (VirtualBox)
 - Active Directory Domain Services (AD DS)
 - Group Policy Management Console (GPMC)
-- Windows 10 Pro (klientmaskin i samma domän)
+- Windows 10 Pro (domain-joined client machine)
 
 ---
 
-## ✅ Vad jag gjorde
+## What I Did
 
-### 1. Grundinstallation
-- Installerade Windows Server 2022 i VirtualBox
-- Konfigurerade statisk IP och satte upp en ny AD-skog och domän (`lab.local`)
+### Domain Setup
+- Installed Windows Server 2022 in VirtualBox
+- Configured static IP and promoted the server to a domain controller
+- Created a new AD forest and domain (`lab.local`)
 
-### 2. Organisationsstruktur
-- Skapade organisationsenheter (OU) för HR, IT och Finance
-- Lade till användarkonton och placerade dem i rätt OU
+### Organizational Structure
+- Created Organizational Units (OUs) for HR, IT, and Finance
+- Added user accounts and placed them in the correct OUs
+- Structured the directory to reflect a realistic company hierarchy
 
-### 3. Grupper & RBAC
-- Skapade säkerhetsgrupper per avdelning
-- Tilldelade resursbehörigheter baserat på grupptillhörighet – inte individuella konton
-- Testade rollbaserad åtkomstkontroll (RBAC) i praktiken
+### Groups & RBAC
+- Created security groups per department
+- Assigned resource permissions to groups, not individual accounts
+- Tested role-based access control (RBAC) – verified users could only access what their role allowed
 
-### 4. Group Policy (GPO)
-- Skapade GPO för lösenordspolicy (minlängd, komplexitet, utgångstid)
-- Implementerade skrivbordslåsning efter inaktivitet
-- Blockerade åtkomst till kontrollpanelen för icke-admin-användare
+### Group Policy (GPO)
+- Configured password policy (minimum length, complexity, expiration)
+- Enforced screen lock after inactivity
+- Restricted Control Panel access for non-admin users
 
-### 5. Onboarding & Offboarding
-- Simulerade onboarding: skapa konto → rätt OU → rätt grupp → verifiera åtkomst
-- Simulerade offboarding: inaktivera konto → ta bort grupptillhörighet → arkivera
-
----
-
-## 💡 Vad jag lärde mig
-
-- Hur AD-struktur med OU och grupper speglar en riktig organisations behörighetsmodell
-- Varför RBAC är smartare än att sätta behörigheter per individ
-- Hur GPO kan styra hela miljöer centralt utan att röra varje maskin manuellt
-- Kopplingen mellan on-prem AD och molnbaserade lösningar som Azure AD / Entra ID
+### User Lifecycle
+- Simulated onboarding: create account → assign OU → assign group → verify access
+- Simulated offboarding: disable account → remove group memberships → archive
 
 ---
 
-## 🔗 Relaterade tekniker
+## Key Takeaways
 
-`Active Directory` `IAM` `RBAC` `GPO` `Windows Server` `Onboarding` `Offboarding` `Identity Management`
-# active-directory-lab
+- How AD structure with OUs and groups reflects a real organization's permission model
+- Why RBAC is more scalable and auditable than per-user permission management
+- How GPOs enforce security policies across an entire environment centrally
+- The relationship between on-premises AD and cloud identity platforms like Azure AD
+
+---
+
+## Related Concepts
+
+`Active Directory` `IAM` `RBAC` `GPO` `Windows Server` `Identity Management` `Onboarding` `Offboarding` `Azure AD`
+
